@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portofolio Qanita</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff6fa;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+header{
+    width:100%;
+    padding:25px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,246,250,0.95);
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    font-size:35px;
+    font-weight:700;
+    color:#ff3f8e;
+    animation:fadeDown 1s ease;
+}
+
+nav a{
+    margin-left:35px;
+    text-decoration:none;
+    color:#222;
+    font-weight:500;
+    position:relative;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ff3f8e;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:3px;
+    background:#ff3f8e;
+    left:0;
+    bottom:-8px;
+    transition:.4s;
+    border-radius:10px;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+.hero{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px 8%;
+    position:relative;
+}
+
+.hero-text{
+    width:50%;
+    animation:fadeLeft 1.2s ease;
+}
+
+.hero-text h1{
+    font-size:75px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero-text span{
+    color:#ff4b97;
+}
+
+.hero-text p{
+    font-size:30px;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 30px;
+    background:linear-gradient(45deg,#ff4b97,#ff75b3);
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    box-shadow:0 8px 20px rgba(255,75,151,.3);
+    transition:.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+.hero-image{
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    border:10px solid #ff6aaa;
+    overflow:hidden;
+    animation:float 3s ease-in-out infinite;
+    box-shadow:0 10px 40px rgba(255,75,151,.3);
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* ABOUT */
+.about{
+    padding:100px 8%;
+    display:flex;
+    align-items:center;
+    gap:50px;
+    background:#fffafd;
+}
+
+.about img{
+    width:320px;
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+    animation:zoomIn 1s ease;
+}
+
+.about-text{
+    max-width:600px;
+}
+
+.title{
+    color:#ff3f8e;
+    margin-bottom:20px;
+    font-size:40px;
+}
+
+.about-text p{
+    line-height:1.8;
+    margin-bottom:20px;
+    color:#444;
+}
+
+/* SKILLS */
+.skills{
+    padding:100px 8%;
+}
+
+.skills h2{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:45px;
+}
+
+.skill-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.skill-card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.4s;
+    animation:fadeUp 1s ease;
+}
+
+.skill-card:hover{
+    transform:translateY(-10px);
+}
+
+.skill-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:#ffd5e7;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    background:linear-gradient(45deg,#ff3f8e,#ff78b6);
+    border-radius:20px;
+    animation:load 2s ease;
+}
+
+/* PROJECT */
+.project{
+    padding:100px 8%;
+}
+
+.project h2{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:45px;
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.4s;
+    animation:fadeUp 1.2s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+}
+
+.tag{
+    display:inline-block;
+    padding:6px 15px;
+    background:#ffd5e7;
+    color:#ff3f8e;
+    border-radius:20px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.card-content a{
+    display:inline-block;
+    padding:10px 25px;
+    background:#ff4b97;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.card-content a:hover{
+    background:#ff2d83;
+}
+
+/* FOOTER */
+footer{
+    background:linear-gradient(45deg,#ffc6dd,#ffddeb);
+    padding:40px 8%;
+    text-align:center;
+    margin-top:50px;
+}
+
+footer p{
+    margin-top:15px;
+    color:#444;
+}
+
+/* ANIMATION */
+@keyframes fadeLeft{
+    from{
+        opacity:0;
+        transform:translateX(-50px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@keyframes zoomIn{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes load{
+    from{
+        width:0;
+    }
+}
+
+@media(max-width:900px){
+
+    .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+        gap:40px;
+    }
+
+    .hero-text{
+        width:100%;
+    }
+
+    .hero-text h1{
+        font-size:50px;
+    }
+
+    .about{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    nav{
+        display:none;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">PORTOFOLIO</div>
+
+    <nav>
+        <a href="#">Beranda</a>
+        <a href="#about">Tentang Saya</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#project">Proyek</a>
+        <a href="#footer">Kontak</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-text">
+        <h1>Haii, haii <br>aku <span>Qanita</span></h1>
+        <p>10 PPLG 3</p>
+
+        <a href="#project" class="btn">
+            Lihat Proyek Saya ↗
+        </a>
+    </div>
+
+    <div class="hero-image">
+        <img src=".//aset/fotoku.jpg" alt="">
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <img src=".//aset/fotoku.jpg" alt="">
+
+    <div class="about-text">
+        <h2 class="title">❤ Tentang Saya</h2>
+
+        <p>
+            Halo! Saya Qanita, seorang pelajar kelas 10 PPLG 3
+            yang memiliki minat di bidang teknologi, desain,
+            dan pengembangan web.
+        </p>
+
+        <p>
+            Saya suka belajar hal baru, membuat karya kreatif,
+            dan terus berkembang untuk masa depan yang lebih baik.
+        </p>
+
+        <a href="#" class="btn">Selengkapnya</a>
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+
+    <h2>Keahlian</h2>
+
+    <div class="skill-grid">
+
+        <div class="skill-card">
+            <div class="skill-top">
+                <h3>HTML</h3>
+                <span>85%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:85%"></span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-top">
+                <h3>CSS</h3>
+                <span>75%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:75%"></span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-top">
+                <h3>JAVASCRIPT</h3>
+                <span>60%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:60%"></span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-top">
+                <h3>FIGMA</h3>
+                <span>70%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:70%"></span>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-top">
+                <h3>AI</h3>
+                <span>65%</span>
+            </div>
+
+            <div class="progress">
+                <span style="width:65%"></span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECT -->
+<section class="project" id="project">
+
+    <h2>Landing Page</h2>
+
+    <div class="project-grid">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop" alt="">
+
+            <div class="card-content">
+                <h3>Sistem Manajemen Siswa</h3>
+
+                <span class="tag">Sekolah</span>
+
+                <br>
+<div class="mt-auto text-end">
+                        <a href="tgs 2.html" class="btn btn-outline-primary btn-sm px-3 rounded-pill">Buka &rarr;</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1000&auto=format&fit=crop" alt="">
+
+            <div class="card-content">
+                <h3>Environs - Edukasi Lingkungan</h3>
+
+                <span class="tag">Lingkungan</span>
+
+                <br>
+
+                <div class="mt-auto text-end">
+                        <a href="tgs 3.html" class="btn btn-outline-primary btn-sm px-3 rounded-pill">Buka &rarr;</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1000&auto=format&fit=crop" alt="">
+
+            <div class="card-content">
+                <h3>Havena - Dekorasi Rumah</h3>
+
+                <span class="tag">Dekorasi</span>
+
+                <br>
+
+                
+                <div class="mt-auto text-end">
+                        <a href="tgs 4.html" class="btn btn-outline-primary btn-sm px-3 rounded-pill">Buka &rarr;</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src=".//aset/ss an tgs 5" alt="">
+
+            <div class="card-content">
+                <h3>SQUARESPACE - Interior</h3>
+
+                <span class="tag">Interior</span>
+
+                <br>
+
+                
+                <div class="mt-auto text-end">
+                        <a href="tgs 5.html" class="btn btn-outline-primary btn-sm px-3 rounded-pill">Buka &rarr;</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+
+    <h3>qanita@example.com</h3>
+    <h3>• Salatiga, Indonesia </h3>
+    • 0812-3456-7890</h3>
+
+    <p>© 2025 Qanita. All Rights Reserved.</p>
+
+</footer>
+
+</body>
+</html>
